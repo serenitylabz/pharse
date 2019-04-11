@@ -1,9 +1,10 @@
 <?php
 
-namespace TMciver\Pharse;
+namespace Pharse;
 
 use PhatCats\Typeclass\Functor;
-use PhatCats\LinkedListFactory;
+use PhatCats\LinkedList\LinkedListFactory;
+use PhatCats\Tuple;
 
 class ParserFunctor implements Functor {
 
@@ -23,7 +24,7 @@ class ParserFunctor implements Functor {
           $newFirst = call_user_func($this->f, $first);
 
           return new Tuple($newFirst, $second);
-        }
+        });
       }
     };
   }
