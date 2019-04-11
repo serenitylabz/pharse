@@ -20,26 +20,7 @@ class ItemParser implements Parser {
     }
   }
 
-  // function map(callable $f) {
-  //   return new class($this, $f) extends Parser {
-  //     private $parser;
-  //     private $f;
-
-  //     public function __construct($parser, $f) {
-  //       $this->parser = $parser;
-  //       $this->f = $f;
-  //     }
-
-  //     public function parse($input) {
-  //       $parseResult = $this->parser->parse($input);
-  //       return  $parseResult->map(function($tuple) {
-  //         $mappedResult = 
-  //       });
-  //       // if ($parseResult->isEmpty()) {
-          
-  //       // } else {
-  //       // }
-  //     }
-  //   };
-  // }
+  function map(callable $f) {
+    return (new ParserFunctor())->map($this, $f);
+  }
 }

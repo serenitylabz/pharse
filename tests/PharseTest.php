@@ -23,11 +23,11 @@ class PharseTest extends TestCase {
     $this->assertEquals($expectedResult, $parseResult);
   }
 
-  // public function testFunctor() {
-  //   $itemParser = new Itemparser();
-  //   $parseResult = $itemParser->map('strToUpper')->parse("abc");
-  //   $expectedResult = $this->listFactory->pure(new Tuple("A", "bc"));
+  public function testFunctor() {
+    $itemParser = new Itemparser();
+    $parseResult = $itemParser->map('strToUpper')->parse("abc");
+    $expectedResult = $this->listFactory->pure(new Tuple("A", "bc"));
 
-  //   $this->assertEquals($expectedResult, $parseResult);
-  // }
+    $this->assertEquals($expectedResult, $parseResult);
+  }
 }
