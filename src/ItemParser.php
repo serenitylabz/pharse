@@ -5,7 +5,7 @@ namespace Pharse;
 use PhatCats\LinkedList\LinkedListFactory;
 use PhatCats\Tuple;
 
-class ItemParser implements Parser {
+class ItemParser extends Parser {
 
   function parse($input) {
     if ($input === '') {
@@ -18,9 +18,5 @@ class ItemParser implements Parser {
 
       return $factory->pure($tuple);
     }
-  }
-
-  function map(callable $f) {
-    return (new ParserFunctor())->map($this, $f);
   }
 }

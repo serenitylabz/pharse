@@ -9,7 +9,7 @@ use PhatCats\Tuple;
 class ParserFunctor implements Functor {
 
   function map($parser, callable $f) {
-    return new class($parser, $f) implements Parser {
+    return new class($parser, $f) extends Parser {
       function __construct($parser, callable $f) {
         $this->parser = $parser;
         $this->f = $f;

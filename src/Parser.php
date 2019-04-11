@@ -2,9 +2,7 @@
 
 namespace Pharse;
 
-//use PhatCats\Typeclass\Monad;
-
-interface Parser {
+abstract class Parser {
 
   /**
    * "A Parser for Things
@@ -20,5 +18,12 @@ interface Parser {
    * type of your choosing.  The second element of the tuple is a string that is
    * the unconsumed input.
    */
-  function parse($input);
+  abstract function parse($input);
+
+  /**
+   * Map a function over the result of this Parser using `ParserFunctor`.
+   */
+  function map(callable $f) {
+    return (new ParserFunctor())->map($this, $f);
+  }
 }
