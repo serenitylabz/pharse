@@ -2,6 +2,8 @@
 
 namespace Pharse;
 
+use Pharse\ParserApplicative;
+
 abstract class Parser {
 
   /**
@@ -24,6 +26,16 @@ abstract class Parser {
    * Map a function over the result of this Parser using `ParserFunctor`.
    */
   function map(callable $f) {
-    return (new ParserFunctor())->map($this, $f);
+    $functor = new ParserFunctor();
+    return $functor->map($this, $f);
+  }
+
+  /**
+   * Applies a function contained in this `Parser` to an argument contained in
+   * the given `Parser`.
+   */
+  function apply($fx) {
+    $applicative = new ParserApplicative();
+    return $applicative->apply($this, $fx);
   }
 }

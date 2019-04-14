@@ -5,7 +5,7 @@ namespace Pharse\Test;
 use PHPUnit\Framework\TestCase;
 use Pharse\ItemParser;
 use Pharse\StringParser;
-
+use Pharse\ParserApplicative;
 use PhatCats\LinkedList\LinkedListFactory;
 use PhatCats\Tuple;
 
@@ -55,5 +55,16 @@ class PharseTest extends TestCase {
     $expectedResult = $this->listFactory->pure(new Tuple("A", "bc"));
 
     $this->assertEquals($expectedResult, $parseResult);
+  }
+
+  public function testApplicative() {
+    $applicative = new ParserApplicative();
+    $ff = $applicative->pure(function($arg) { return intval($arg) + 1; });
+    $fx = new ItemParser();
+    $parser = $ff->apply($fx);
+    $actual = $parser->parse("1bc");
+    $expected = $this->listFactory->pure(new Tuple(2, "bc"));
+
+    $this->assertEquals($expected, $actual);
   }
 }
