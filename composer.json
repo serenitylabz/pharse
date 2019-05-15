@@ -29,7 +29,8 @@
       "__Vendor__\\__Package__\\": [
         "tests/",
         "tests/Fake"
-      ]
+      ],
+      "Pharse\\Test\\": "test/"
     }
   },
   "scripts": {

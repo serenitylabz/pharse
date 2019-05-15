@@ -5,6 +5,7 @@ namespace Pharse;
 use PhatCats\Typeclass\Applicative;
 use PhatCats\LinkedList\LinkedListFactory;
 use PhatCats\Tuple;
+use PhatCats\PartialFunction;
 
 class ParserApplicative extends ParserFunctor implements Applicative {
 
@@ -24,7 +25,7 @@ class ParserApplicative extends ParserFunctor implements Applicative {
   }
 
   public function apply($ff, $fa = null) {
-    // we'll ignore the case where $fa == null, for now.
+    // TODO we'll ignore the case where $fa == null, for now.
     return new class($ff, $fa) extends Parser {
       private $ff;
       private $fa;
@@ -39,7 +40,13 @@ class ParserApplicative extends ParserFunctor implements Applicative {
         $secondParse = $firstParse->flatMap(function($tuple) {
           $f = $tuple->first();
           $rest = $tuple->second();
-          $secondParse = $this->fa->map($f)->parse($rest);
+
+          // Make sure $f is a PartialFunction
+          $pf = $f instanceof PartialFunction ?
+              $f :
+              new PartialFunction($f);
+
+          $secondParse = $this->fa->map($pf)->parse($rest);
 
           return $secondParse;
         });
