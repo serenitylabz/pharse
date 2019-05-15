@@ -31,6 +31,15 @@ abstract class Parser {
   }
 
   /**
+   * Map a function that returns a `Parser` over the result of this Parser using
+   * `ParserFunctor`.
+   */
+  function flatMap(callable $f) {
+    $monad = new ParserMonad();
+    return $monad->flatMap($this, $f);
+  }
+
+  /**
    * Applies a function contained in this `Parser` to an argument contained in
    * the given `Parser`.
    */
