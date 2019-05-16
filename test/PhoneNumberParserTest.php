@@ -14,7 +14,7 @@ class PhoneNumberParserTest extends TestCase {
 
     $result = $phoneNumberParser->parse("8675309");
     $listFactory = new LinkedListFactory();
-    $expectedResult = $listFactory->pure(new Tuple([8, 6, 7], "5309"));
+    $expectedResult = $listFactory->pure(new Tuple([[8, 6, 7], [5, 3, 0, 9]], ""));
 
     $this->assertEquals($expectedResult, $result);
   }
