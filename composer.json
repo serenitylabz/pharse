@@ -8,9 +8,15 @@
       "email": "tim@timmciver.com"
     }
   ],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/serenitylabz/phatcats"
+    }
+  ],
   "require": {
     "php": ">=7.0.0",
-    "serenitylabs/phatcats": "0.10.0"
+    "serenitylabs/phatcats": "dev-alternative"
   },
   "require-dev": {
     "phpunit/phpunit": "^6.5",

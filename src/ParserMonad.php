@@ -33,6 +33,12 @@ class ParserMonad extends ParserApplicative implements Monad {
     };
   }
 
+  public function then($parser1, $parser2) {
+    return $this->flatMap($parser1, function ($ignore) use ($parser2) {
+      return $parser2;
+    });
+  }
+
   function join($mma) {
     return $this->flatMap($mma, $identity);
   }
