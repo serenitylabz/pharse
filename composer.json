@@ -16,7 +16,7 @@
   ],
   "require": {
     "php": ">=7.0.0",
-    "serenitylabs/phatcats": "dev-alternative"
+    "serenitylabs/phatcats": "dev-master#7cb576331f4216a7beea0b6e3c9c251c08d6f211"
   },
   "require-dev": {
     "phpunit/phpunit": "^6.5",
