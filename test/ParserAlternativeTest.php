@@ -5,6 +5,7 @@ namespace Pharse\Test;
 require_once __DIR__ . "/../vendor/serenitylabs/phatcats/test/Typeclass/Alternative/AlternativeTest.php";
 use PhatCats\Test\Typeclass\Alternative\AlternativeTest;
 use Pharse\ParserAlternative;
+use Pharse\StringParser;
 
 class ParserAlternativeTest extends AlternativeTest {
 
@@ -29,6 +30,24 @@ class ParserAlternativeTest extends AlternativeTest {
 
   protected function getThree() {
     return $this->parserAlternative->pure(3);
+  }
+
+  public function testFirstSuccess() {
+    $parseA = new StringParser("a");
+    $parseB = new StringParser("b");
+    $parser = $this->parserAlternative->or($parseA, $parseB);
+    $result = $parser->parse("abc");
+
+    $this->assertTrue(!$result->isEmpty());
+  }
+
+  public function testSecondSuccess() {
+    $parseA = new StringParser("a");
+    $parseB = new StringParser("b");
+    $parser = $this->parserAlternative->or($parseB, $parseA);
+    $result = $parser->parse("abc");
+
+    $this->assertTrue(!$result->isEmpty());
   }
 
   protected function assertAlternativesEqual($alt1, $alt2) {
