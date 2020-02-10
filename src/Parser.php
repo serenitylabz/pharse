@@ -4,6 +4,7 @@ namespace Pharse;
 
 use Pharse\ParserApplicative;
 
+// TODO: add a member variable for a LinkedListFactory.
 abstract class Parser {
 
   /**

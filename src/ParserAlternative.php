@@ -4,9 +4,16 @@ namespace Pharse;
 
 use PhatCats\Typeclass\Alternative;
 use PhatCats\Typeclass\AlternativeTrait;
+use PhatCats\LinkedList\LinkedListFactory;
 
 class ParserAlternative extends ParserApplicative implements Alternative {
   use AlternativeTrait;
+
+  protected $factory;
+
+  public function __construct($listFactory = null) {
+    $this->factory = is_null($listFactory) ? new LinkedListFactory() : $listFactory;
+  }
 
   private $nullParser;
 
