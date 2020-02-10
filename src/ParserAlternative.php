@@ -10,14 +10,10 @@ class ParserAlternative extends ParserApplicative implements Alternative {
   use AlternativeTrait;
 
   protected $factory;
+  private $nullParse;r
 
   public function __construct($listFactory = null) {
     $this->factory = is_null($listFactory) ? new LinkedListFactory() : $listFactory;
-  }
-
-  private $nullParser;
-
-  public function __construct() {
     $this->nullParser = new NullParser();
   }
 
