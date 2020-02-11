@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b85268d3be1409a0fb9b3ff2fef12fed",
+    "content-hash": "e35f1c4729f3063eaac12728a12601f6",
     "packages": [
         {
             "name": "raphhh/trex-reflection",
@@ -60,12 +60,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/serenitylabz/phatcats.git",
-                "reference": "1de0bf3fd8b5d328188ff262301c33993db11d02"
+                "reference": "f686fa6bc094fc925ce4be4014b8467cf22cba58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/serenitylabz/phatcats/zipball/1de0bf3fd8b5d328188ff262301c33993db11d02",
-                "reference": "1de0bf3fd8b5d328188ff262301c33993db11d02",
+                "url": "https://api.github.com/repos/serenitylabz/phatcats/zipball/f686fa6bc094fc925ce4be4014b8467cf22cba58",
+                "reference": "f686fa6bc094fc925ce4be4014b8467cf22cba58",
                 "shasum": ""
             },
             "require": {
@@ -101,7 +101,7 @@
                 "source": "https://github.com/serenitylabz/phatcats/tree/master",
                 "issues": "https://github.com/serenitylabz/phatcats/issues"
             },
-            "time": "2019-11-04T04:31:29+00:00"
+            "time": "2020-02-11T02:47:11+00:00"
         }
     ],
     "packages-dev": [
@@ -1098,6 +1098,7 @@
                 "MIT"
             ],
             "description": "PHPStan Phar distribution",
+            "abandoned": "phpstan/phpstan",
             "time": "2018-01-28T14:29:27+00:00"
         },
         {

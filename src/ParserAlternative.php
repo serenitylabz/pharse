@@ -3,11 +3,9 @@
 namespace Pharse;
 
 use PhatCats\Typeclass\Alternative;
-use PhatCats\Typeclass\AlternativeTrait;
 use PhatCats\LinkedList\LinkedListFactory;
 
 class ParserAlternative extends ParserApplicative implements Alternative {
-  use AlternativeTrait;
 
   protected $factory;
   private $nullParse;
