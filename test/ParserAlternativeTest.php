@@ -4,15 +4,19 @@ namespace Pharse\Test;
 
 require_once __DIR__ . "/../vendor/serenitylabs/phatcats/test/Typeclass/Alternative/AlternativeTest.php";
 use PhatCats\Test\Typeclass\Alternative\AlternativeTest;
+use PhatCats\LinkedList\LinkedListFactory;
+use PhatCats\Tuple;
 use Pharse\ParserAlternative;
 use Pharse\StringParser;
 
 class ParserAlternativeTest extends AlternativeTest {
 
   private $parserAlternative;
+  private $listFactory;
 
   public function setUp() {
     $this->parserAlternative = new ParserAlternative();
+    $this->listFactory = new LinkedListFactory();
     parent::setUp();
   }
 
@@ -48,6 +52,51 @@ class ParserAlternativeTest extends AlternativeTest {
     $result = $parser->parse("abc");
 
     $this->assertTrue(!$result->isEmpty());
+  }
+
+  public function testZeroOrMore1() {
+    $parseA = new StringParser("a");
+    $parser = $this->parserAlternative->zeroOrMore($parseA);
+    $result = $parser->parse("abc");
+
+    // expected
+    $as = $this->listFactory->pure("a");
+    $expected = $this->listFactory->pure(new Tuple($as, "bc"));
+
+    $this->assertEquals($expected, $result);
+  }
+
+  public function testZeroOrMore2() {
+    $parseA = new StringParser("a");
+    $parser = $this->parserAlternative->zeroOrMore($parseA);
+    $result = $parser->parse("bcd");
+
+    // expected
+    $as = $this->listFactory->empty();
+    $expected = $this->listFactory->pure(new Tuple($as, "bcd"));
+
+    $this->assertEquals($expected, $result);
+  }
+
+  public function testZeroOrMore3() {
+    $parseA = new StringParser("a");
+    $parser = $this->parserAlternative->zeroOrMore($parseA);
+    $result = $parser->parse("aaabc");
+
+    // expected
+    $as = $this->listFactory->empty()->cons("a")->cons("a")->cons("a");
+    $expected = $this->listFactory->pure(new Tuple($as, "bc"));
+
+    $this->assertEquals($expected, $result);
+  }
+
+  public function testOneOrMore() {
+    $parseA = new StringParser("a");
+    $parser = $this->parserAlternative->oneOrMore($parseA);
+    $result = $parser->parse("bcd");
+
+    // Here, we assert that the parse *did* fail
+    $this->assertTrue($result->isEmpty());
   }
 
   protected function assertAlternativesEqual($alt1, $alt2) {
