@@ -15,7 +15,7 @@ class ParserAlternativeTest extends AlternativeTest {
   private $listFactory;
 
   public function setUp() {
-    $this->parserAlternative = ParserAlternative::getInstance();
+    $this->parserAlternative = new ParserAlternative();
     $this->listFactory = new LinkedListFactory();
     parent::setUp();
   }
