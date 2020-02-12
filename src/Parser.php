@@ -7,7 +7,13 @@ use Pharse\ParserApplicative;
 // TODO: add a member variable for a LinkedListFactory.
 abstract class Parser {
 
-  public static $parserAlternative;
+  protected static $parserAlternative;
+
+  public function __construct() {
+    if (is_null(self::$parserAlternative)) {
+      self::$parserAlternative = new ParserAlternative();
+    }
+  }
 
   /**
    * "A Parser for Things
@@ -59,5 +65,3 @@ abstract class Parser {
     return $self::$parserAlternative->oneOrMore($this);
   }
 }
-
-Parser::$parserAlternative = new ParserAlternative();

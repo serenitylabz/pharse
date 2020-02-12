@@ -9,11 +9,9 @@ use PhatCats\Tuple;
 class ParserAlternative extends ParserApplicative implements Alternative {
 
   protected $factory;
-  private $nullParse;
 
   public function __construct($listFactory = null) {
     $this->factory = is_null($listFactory) ? new LinkedListFactory() : $listFactory;
-    $this->nullParser = new NullParser();
   }
 
   public function or($left, $right) {
@@ -21,7 +19,7 @@ class ParserAlternative extends ParserApplicative implements Alternative {
   }
 
   function empty() {
-    return $this->nullParser;
+    return NullParser::getInstance();
   }
 
   function zeroOrMore($parser) {
