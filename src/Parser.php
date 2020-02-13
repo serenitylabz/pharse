@@ -4,7 +4,16 @@ namespace Pharse;
 
 use Pharse\ParserApplicative;
 
+// TODO: add a member variable for a LinkedListFactory.
 abstract class Parser {
+
+  protected static $parserAlternative;
+
+  public function __construct() {
+    if (is_null(self::$parserAlternative)) {
+      self::$parserAlternative = new ParserAlternative();
+    }
+  }
 
   /**
    * "A Parser for Things
@@ -46,5 +55,13 @@ abstract class Parser {
   function apply($fx) {
     $applicative = new ParserApplicative();
     return $applicative->apply($this, $fx);
+  }
+
+  function zeroOrMore() {
+    return self::$parserAlternative->zeroOrMore($this);
+  }
+
+  function oneOrMore() {
+    return self::$parserAlternative->oneOrMore($this);
   }
 }
