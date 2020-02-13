@@ -58,10 +58,10 @@ abstract class Parser {
   }
 
   function zeroOrMore() {
-    return $self::$parserAlternative->zeroOrMore($this);
+    return self::$parserAlternative->zeroOrMore($this);
   }
 
   function oneOrMore() {
-    return $self::$parserAlternative->oneOrMore($this);
+    return self::$parserAlternative->oneOrMore($this);
   }
 }
